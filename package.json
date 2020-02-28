@@ -4,8 +4,9 @@
   "description": "This is Project 2.0 (Dean, Randy, and Marc)",
   "main": ".eslintrc.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "npm run lint",
+    "start": "node server.js",
+    "lint": "eslint --quiet ."
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/mfernandez225/Project2.0/issues"
   },
-  "homepage": "https://github.com/mfernandez225/Project2.0#readme"
+  "homepage": "https://github.com/mfernandez225/Project2.0#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
 }
