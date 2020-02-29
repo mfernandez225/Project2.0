@@ -5,7 +5,7 @@
   "main": ".eslintrc.js",
   "scripts": {
     "test": "npm run lint",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "lint": "eslint --quiet ."
   },
   "repository": {
@@ -20,6 +20,10 @@
   "homepage": "https://github.com/mfernandez225/Project2.0#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.18.3"
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0"
   }
 }
