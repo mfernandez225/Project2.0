@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars');
-const port = 3000
+// eslint-disable-next-line no-undef
+const PORT = process.env.PORT || 3000
+const db = require('./models')
 
 app.use(express.static('assets'))
 
@@ -10,4 +12,9 @@ app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => res.render('home'))
 
-app.listen(port, () => console.log(`Project 2.0 is listening at http://localhost:${port}`))
+
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("App listening on PORT " + PORT);
+    });
+});
