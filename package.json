@@ -20,7 +20,6 @@
   "homepage": "https://github.com/mfernandez225/Project2.0#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.18.3",
     "nodemon": "^2.0.2"
   },
   "dependencies": {
