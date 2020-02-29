@@ -14,3 +14,9 @@
   color: white;
   background-color: black;
 }
+
+#topTicker {
+  font-family: 'Codystar';
+  color: #fdff00;
+  font-size: bold;
+}
