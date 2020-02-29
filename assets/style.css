@@ -1,7 +1,16 @@
 #tickerBox {
   width: 100%;
+  border-bottom: 1px solid black;
+}
+
+#logo {
+  font-family: 'Aldrich';
+  font-size: 40px;
+  text-align: center;
 }
 
 #tickerContent {
   width: 100%;
+  color: white;
+  background-color: black;
 }
