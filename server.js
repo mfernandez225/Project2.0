@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars');
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 3000
 const db = require('./models')
 

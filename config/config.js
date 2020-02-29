@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 require("dotenv")
 module.exports = {
     "development": {
