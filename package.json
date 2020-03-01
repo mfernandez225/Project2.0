@@ -19,10 +19,12 @@
   },
   "homepage": "https://github.com/mfernandez225/Project2.0#readme",
   "devDependencies": {
+    "babel-register": "^6.26.0",
     "eslint": "^6.8.0",
     "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "mysql2": "^2.1.0",
