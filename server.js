@@ -14,7 +14,11 @@ app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => res.render('home'))
 
+/* The {force:true} will create a new table every time, erasing all data. 
+USE THIS INITIALLY, LOAD UP YOUR DATABASE WITH ANY METHOD. 
 
+YOU MAY ONLY CONTINUE WITH THIS WHEN THE DATABASE HAS NO VALUE. 
+*/
 db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);

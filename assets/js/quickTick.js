@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 $(document).ready(function() {
 
     /* This will be the javascript needed for user to transvers the DOM
