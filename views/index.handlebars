@@ -25,3 +25,23 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="What stock would you like to track?" aria-label="Stock Tracker"
+      aria-describedby="button-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+    </div>
+  </div>
+</div>
+
+{{!-- This is search bar --}}
+{{!-- https://www.w3schools.com/howto/howto_js_autocomplete.asp --}}
+
+<form autocomplete="off" action="/action_page.php">
+  <div class="autocomplete" style="width:300px;">
+    <input id="myInput" type="text" name="myCountry" placeholder="Country">
+  </div>
+  <input type="submit">
+</form>
