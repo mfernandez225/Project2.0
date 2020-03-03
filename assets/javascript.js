@@ -1,5 +1,5 @@
-// eslint-disable-next-line no-undef
-$(document).ready(function () {});
+/* eslint-disable no-undef */
+
 /* This will be the javascript needed for user to transvers the DOM
 The list of items needed for a functional website: 
 
@@ -24,27 +24,27 @@ The list of items needed for a functional website:
 
 $("#searchForm").on("submit", function (event) {
 
-    event.preventDefault();
-    // This line grabs the input from the textbox
+  event.preventDefault();
+  // This line grabs the input from the textbox
 
-    const stockName = $("#findStock").val().trim();
+  const stockName = $("#findStock").val().trim();
 
-    getStock(stockName);
+  getStock(stockName);
 });
 
 function getStock(stockName) {
 
 
-    var APIKey = "Tpk_8ffdae4873fd4f08a97e679741d27746";
-    //var APIKey = "pk_ab67997aa39c4296b79de441635e9a49";
+  var APIKey = "Tpk_8ffdae4873fd4f08a97e679741d27746";
+  //var APIKey = "pk_ab67997aa39c4296b79de441635e9a49";
 
-    var stockAPI = "https://sandbox.iexapis.com/stable/stock/" + stockName + "/quote/2?token=" + APIKey;
-    //var stockAPI = "https://cloud.iexapis.com/stable/stock/" + stockName + "/quote/2?token=" + APIKey;
+  var stockAPI = "https://sandbox.iexapis.com/stable/stock/" + stockName + "/quote/2?token=" + APIKey;
+  //var stockAPI = "https://cloud.iexapis.com/stable/stock/" + stockName + "/quote/2?token=" + APIKey;
 
 
-    $.getJSON(stockAPI, function (response) {
-        $("#stocks").append(
-            `<div class="container">
+  $.getJSON(stockAPI, function (response) {
+    $("#stocks").append(
+      `<div class="container">
             <div class="row m-3">
             <div class="col-12 card p-2">
             <div><strong> Company: </strong>${response.companyName}</div>
@@ -61,8 +61,8 @@ function getStock(stockName) {
             </div>
             </div>
             </div>`);
-    }).fail(() => {
-        // We can insert an error message in the HTML
-        console.log("error")
-    });
+  }).fail(() => {
+    // We can insert an error message in the HTML
+    console.log("error")
+  });
 }
