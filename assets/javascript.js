@@ -5,29 +5,38 @@ const apiKey = "Tpk_8ffdae4873fd4f08a97e679741d27746";
 const apiBaseUrl = "https://sandbox.iexapis.com/stable/stock"
 // const apiBaseUrl = "https://cloud.iexapis.com/stable/stock"
 
+
+// Search Function
 $("#searchForm").on("submit", async (event) => {
   event.preventDefault();
   const stockName = $("#findStock").val().trim();
-  const {
-    companyName,
-    symbol,
-    latestPrice,
-    marketCap,
-    peRatio
-  } = await getStockInfo(stockName);
-  const {
-    chartData
-  } = await getStockChart(stockName);
-  addStockToPage({
-    companyName,
-    symbol,
-    latestPrice,
-    marketCap,
-    peRatio,
-    chartData
-  })
-  $("#searchForm")[0].reset();
+  if ($(`#stock-${stockName}`).length === 0) {
+    const {
+      companyName,
+      symbol,
+      latestPrice,
+      marketCap,
+      peRatio
+    } = await getStockInfo(stockName);
+    const {
+      chartData
+    } = await getStockChart(stockName);
+    addStockToPage({
+      companyName,
+      symbol,
+      latestPrice,
+      marketCap,
+      peRatio,
+      chartData
+    })
+    $("#searchForm")[0].reset();
+  }
 });
+
+// When the user is typing it will automatically make the text Uppercase
+$("#findStock").on("keydown", () => {
+  $("#findStock").val($("#findStock").val().toUpperCase());
+})
 
 const getStockInfo = async (stockName) => {
   const stockApiUrl = `${apiBaseUrl}/${stockName}/quote/2?token=${apiKey}`;
@@ -51,6 +60,7 @@ const getStockChart = async (stockName) => {
   };
 }
 
+// Creating the Row that displays the API INFORMATION
 const addStockToPage = ({
   companyName,
   symbol,
@@ -59,7 +69,7 @@ const addStockToPage = ({
   peRatio,
   chartData
 }) => {
-  $("#stocks").append(`
+  $("#stocks").prepend(`
     <div id="stock-${symbol}" class="container">
       <div id="stockRow" class="row m-3">
         <div class="col-10 card p-2">
@@ -118,6 +128,11 @@ const addStockToPage = ({
         ],
         borderWidth: 1
       }]
+    },
+    options: {
+      legend: {
+        display: false
+      }
     }
   });
 }

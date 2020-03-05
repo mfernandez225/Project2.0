@@ -20,3 +20,7 @@
   color: #fdff00;
   font-size: bold;
 }
+
+#findStock {
+  text-transform: uppercase;
+}
