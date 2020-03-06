@@ -93,7 +93,9 @@ const addStockToPage = ({
             })}
           </div>
           <div><strong> PE Ratio:</strong> ${peRatio}</div>
+          <div class="container mt-1">
           <canvas width="200" height="200" class="stock-chart"></canvas>
+          </div>
         </div>
         <button type="button" class="col m-3 btn delete-stock-button">
           <i class="fas fa-times fa-2x" style="color:#FF0000;"></i>
@@ -119,7 +121,7 @@ const addStockToPage = ({
           backgroundColor: [
             'rgb(255, 255, 255)'
           ],
-          borderWidth: 3
+          borderWidth: 2
         },
         {
           label: 'High Price',
@@ -130,7 +132,7 @@ const addStockToPage = ({
           backgroundColor: [
             'rgb(255, 255, 255)'
           ],
-          borderWidth: 3
+          borderWidth: 2
         },
         {
           label: 'Low Price',
@@ -141,11 +143,13 @@ const addStockToPage = ({
           backgroundColor: [
             'rgb(255, 255, 255)'
           ],
-          borderWidth: 3
+          borderWidth: 2
         }
       ]
     },
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       legend: {
         display: true
       }
@@ -164,14 +168,14 @@ function stockDow() {
       timestamp: (new Date()).getTime(),
       data: response
     });
-
     populateDowStock(response);
   });
 
   function populateDowStock(response) {
     {
-      var markup = '<div id="topTickerDow">' + response["Global Quote"]["05. price"] +
-        '</div>';
+      var markup = '<div id="topTickerDow">' + "USD " + response["Global Quote"]["05. price"].slice(0, -2) +
+        '</div>'
+      console.log(response);
       var div = document.createElement('div');
       div.innerHTML = markup
       document.getElementById('topTickerDow').prepend(div);
@@ -194,8 +198,9 @@ function stockSNP() {
 
   function populateSNPStock(response) {
     {
-      var markup = ' <div id="topTickerSP">' + response["Global Quote"]["05. price"] +
+      var markup = ' <div id="topTickerSP">' + "USD " + response["Global Quote"]["05. price"].slice(0, -2) +
         '</div>';
+
       var div = document.createElement('div');
       div.innerHTML = markup
       document.getElementById('topTickerSP').prepend(div);
