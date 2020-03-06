@@ -7,6 +7,17 @@
   <script src="https://kit.fontawesome.com/1fd7449b08.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="typeahead.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('input.typeahead').typeahead({
+                name: 'tickers',
+                remote: 'http://localhost:3000/tickers?key=%QUERY',
+                limit: 10
+            });
+        });
+    </script>
   <link href="https://fonts.googleapis.com/css?family=Aldrich|Codystar|Raleway+Dots|Press+Start+2P&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
