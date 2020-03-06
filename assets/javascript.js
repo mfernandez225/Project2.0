@@ -181,13 +181,6 @@ function stockDow() {
       div.innerHTML = markup
       document.getElementById('topTickerDow').prepend(div);
     }
-      {
-          var markup = ' <div id="stockInfo"><p> <div class="dowPrice"> '+ response["Global Quote"]["05. price"] +
-          '</div> </p> </div>';
-           var div = document.createElement('div');
-            div.innerHTML = markup
-           document.getElementById('topTickerDow').prepend(div);
-      }
   }
 }
 
@@ -212,13 +205,5 @@ function stockSNP() {
       div.innerHTML = markup
       document.getElementById('topTickerSP').prepend(div);
     }
-  }
-      {
-          var markup = ' <div id="stockInfo"><p> <div class="snpPrice"> '+ response["Global Quote"]["05. price"] +
-          '</div> </p> </div>';
-           var div = document.createElement('div');
-            div.innerHTML = markup
-           document.getElementById('topTickerSP').prepend(div);       
-      }
   }
 }
