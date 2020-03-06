@@ -175,15 +175,15 @@ function stockDow() {
   function populateDowStock(response) {
       {
          
-          gSymbol = response.symbol;
-          console.log(response["Global Quote"]["05. price"]);
+          // gSymbol = response.symbol;
+          // console.log(response["Global Quote"]["05. price"]);
                     
-          var Price = response["Global Quote"]["05. price"];
+          // var Price = response["Global Quote"]["05. price"];
                     
-          localStorage.setItem("curr_price", ["Global Quote"]["05. price"]);
+          // localStorage.setItem("curr_price", ["Global Quote"]["05. price"]);
 
                   
-          console.log("Dow Price: " + response["Global Quote"]["05. price"]);
+          // console.log("Dow Price: " + response["Global Quote"]["05. price"]);
 
           var markup = ' <div id="stockInfo"><p> <div class="dowPrice"> '+ response["Global Quote"]["05. price"] +
           '</div> </p> </div>';
@@ -217,7 +217,7 @@ function stockSNP() {
           gSymbol = response.symbol;
           console.log(response["Global Quote"]["05. price"]);
           
-          var Price = response["Global Quote"]["05. price"];
+          // var Price = response["Global Quote"]["05. price"];
                     
           localStorage.setItem("curr_price", ["Global Quote"]["05. price"]);
                   
