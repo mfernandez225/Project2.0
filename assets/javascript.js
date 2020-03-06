@@ -174,27 +174,13 @@ function stockDow() {
 
   function populateDowStock(response) {
       {
-         
-          // gSymbol = response.symbol;
-          // console.log(response["Global Quote"]["05. price"]);
-                    
-          // var Price = response["Global Quote"]["05. price"];
-                    
-          // localStorage.setItem("curr_price", ["Global Quote"]["05. price"]);
-
-                  
-          // console.log("Dow Price: " + response["Global Quote"]["05. price"]);
-
           var markup = ' <div id="stockInfo"><p> <div class="dowPrice"> '+ response["Global Quote"]["05. price"] +
           '</div> </p> </div>';
            var div = document.createElement('div');
             div.innerHTML = markup
            document.getElementById('topTickerDow').prepend(div);
-       
       }
-  
   }
-      
 }
 
 function stockSNP() {
@@ -213,24 +199,11 @@ function stockSNP() {
 
   function populateSNPStock(response) {
       {
-         
-          gSymbol = response.symbol;
-          console.log(response["Global Quote"]["05. price"]);
-          
-          // var Price = response["Global Quote"]["05. price"];
-                    
-          localStorage.setItem("curr_price", ["Global Quote"]["05. price"]);
-                  
-          console.log("S&P Price: " + response["Global Quote"]["05. price"]);
-
           var markup = ' <div id="stockInfo"><p> <div class="snpPrice"> '+ response["Global Quote"]["05. price"] +
           '</div> </p> </div>';
            var div = document.createElement('div');
             div.innerHTML = markup
-           document.getElementById('topTickerSP').prepend(div);
-       
+           document.getElementById('topTickerSP').prepend(div);       
       }
-  
   }
-      
 }
