@@ -92,7 +92,7 @@ const addStockToPage = ({
           <div><strong> PE Ratio:</strong> ${peRatio}</div>
           <canvas width="200" height="200" class="stock-chart"></canvas>
         </div>
-        <button type="button" class="col m-1 btn delete-stock-button">
+        <button type="button" class="col m-3 btn delete-stock-button">
           <i class="fas fa-times fa-2x" style="color:#FF0000;"></i>
         </button>
       </div>
@@ -104,20 +104,20 @@ const addStockToPage = ({
 
   // CHART.JS
   new Chart($(`#stock-${symbol} canvas`), {
-    type: 'bar',
+    type: 'line',
     data: {
-      labels: chartData.map(data => data.date),
+      labels: chartData.map(data => data.label),
       datasets: [{
         label: 'Closing Price',
         data: chartData.map(data => data.close),
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-        ],
+        // backgroundColor: [
+        //   'rgba(255, 99, 132, 0.2)',
+        //   'rgba(54, 162, 235, 0.2)',
+        //   'rgba(255, 206, 86, 0.2)',
+        //   'rgba(75, 192, 192, 0.2)',
+        //   'rgba(153, 102, 255, 0.2)',
+        //   'rgba(255, 159, 64, 0.2)'
+        // ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
           'rgba(54, 162, 235, 1)',
