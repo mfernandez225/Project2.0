@@ -111,38 +111,39 @@ const addStockToPage = ({
     data: {
       labels: chartData.map(data => data.label),
       datasets: [{
-        label: 'Closing Price',
-        data: chartData.map(data => data.close),
-        borderColor: [
-          'rgb(0, 128, 0)'
-        ],
-        backgroundColor: [
-          'rgb(255, 255, 255)'
-        ],
-        borderWidth: 3
-      },
-      {
-        label: 'High Price',
-        data: chartData.map(data => data.high),
-        borderColor: [
-          'rgb(0, 0, 255)'
-        ],
-        backgroundColor: [
-          'rgb(255, 255, 255)'
-        ],
-        borderWidth: 3
-      },
-      {
-        label: 'Low Price',
-        data: chartData.map(data => data.low),
-        borderColor: [
-          'rgb(255, 0, 0)'
-        ],
-        backgroundColor: [
-          'rgb(255, 255, 255)'
-        ],
-        borderWidth: 3
-      }]
+          label: 'Closing Price',
+          data: chartData.map(data => data.close),
+          borderColor: [
+            'rgb(0, 128, 0)'
+          ],
+          backgroundColor: [
+            'rgb(255, 255, 255)'
+          ],
+          borderWidth: 3
+        },
+        {
+          label: 'High Price',
+          data: chartData.map(data => data.high),
+          borderColor: [
+            'rgb(0, 0, 255)'
+          ],
+          backgroundColor: [
+            'rgb(255, 255, 255)'
+          ],
+          borderWidth: 3
+        },
+        {
+          label: 'Low Price',
+          data: chartData.map(data => data.low),
+          borderColor: [
+            'rgb(255, 0, 0)'
+          ],
+          backgroundColor: [
+            'rgb(255, 255, 255)'
+          ],
+          borderWidth: 3
+        }
+      ]
     },
     options: {
       legend: {
@@ -161,76 +162,49 @@ const removeStockFromPage = stockName => {
 function stockDow() {
 
   var dowAPI = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=DJI&apikey=6QFBH662YTYIW2BW";
-  
+
   $.getJSON(dowAPI, function (response) {
 
-      localStorage.stockCacheUser = JSON.stringify({
-          timestamp: (new Date()).getTime(),
-          data: response
-      });
+    localStorage.stockCacheUser = JSON.stringify({
+      timestamp: (new Date()).getTime(),
+      data: response
+    });
 
-      populateDowStock(response);
+    populateDowStock(response);
   });
 
   function populateDowStock(response) {
-      {
-         
-          // gSymbol = response.symbol;
-          // console.log(response["Global Quote"]["05. price"]);
-                    
-          // var Price = response["Global Quote"]["05. price"];
-                    
-          // localStorage.setItem("curr_price", ["Global Quote"]["05. price"]);
-
-                  
-          // console.log("Dow Price: " + response["Global Quote"]["05. price"]);
-
-          var markup = ' <div id="stockInfo"><p> <div class="dowPrice"> '+ response["Global Quote"]["05. price"] +
-          '</div> </p> </div>';
-           var div = document.createElement('div');
-            div.innerHTML = markup
-           document.getElementById('topTickerDow').prepend(div);
-       
-      }
-  
+    {
+      var markup = ' <div id="stockInfo"><p> <div class="dowPrice"> ' + response["Global Quote"]["05. price"] +
+        '</div> </p> </div>';
+      var div = document.createElement('div');
+      div.innerHTML = markup
+      document.getElementById('topTickerDow').prepend(div);
+    }
   }
-      
 }
 
 function stockSNP() {
 
   var snpAPI = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=INX&apikey=6QFBH662YTYIW2BW";
- 
+
   $.getJSON(snpAPI, function (response) {
+    localStorage.stockCacheUser = JSON.stringify({
+      timestamp: (new Date()).getTime(),
+      data: response
+    });
 
-      localStorage.stockCacheUser = JSON.stringify({
-          timestamp: (new Date()).getTime(),
-          data: response
-      });
-
-      populateSNPStock(response);
+    populateSNPStock(response);
   });
 
   function populateSNPStock(response) {
-      {
-         
-          gSymbol = response.symbol;
-          console.log(response["Global Quote"]["05. price"]);
-          
-          // var Price = response["Global Quote"]["05. price"];
-                    
-          localStorage.setItem("curr_price", ["Global Quote"]["05. price"]);
-                  
-          console.log("S&P Price: " + response["Global Quote"]["05. price"]);
-
-          var markup = ' <div id="stockInfo"><p> <div class="snpPrice"> '+ response["Global Quote"]["05. price"] +
-          '</div> </p> </div>';
-           var div = document.createElement('div');
-            div.innerHTML = markup
-           document.getElementById('topTickerSP').prepend(div);
-       
-      }
-  
+    {
+      var markup = ' <div id="stockInfo"><p> <div class="snpPrice"> ' + response["Global Quote"]["05. price"] +
+        '</div> </p> </div>';
+      var div = document.createElement('div');
+      div.innerHTML = markup
+      document.getElementById('topTickerSP').prepend(div);
+    }
   }
-      
+
 }
