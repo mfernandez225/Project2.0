@@ -7,6 +7,7 @@
   font-family: 'Aldrich';
   font-size: 40px;
   text-align: center;
+  color: white;
 }
 
 #tickerContent {
@@ -15,10 +16,11 @@
   background-color: black;
 }
 
-#topTicker {
+#topTickerDow,
+#topTickerSP {
   font-family: 'Codystar';
   color: #fdff00;
-  font-size: bold;
+  font-weight: bolder;
 }
 
 #findStock {
