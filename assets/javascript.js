@@ -5,6 +5,9 @@ const apiKey = "Tpk_8ffdae4873fd4f08a97e679741d27746";
 const apiBaseUrl = "https://sandbox.iexapis.com/stable/stock"
 // const apiBaseUrl = "https://cloud.iexapis.com/stable/stock"
 
+//This is the api call for header
+stockDow();
+stockSNP();
 
 // Search Function
 $("#searchForm").on("submit", async (event) => {
@@ -110,28 +113,40 @@ const addStockToPage = ({
       datasets: [{
         label: 'Closing Price',
         data: chartData.map(data => data.close),
-        // backgroundColor: [
-        //   'rgba(255, 99, 132, 0.2)',
-        //   'rgba(54, 162, 235, 0.2)',
-        //   'rgba(255, 206, 86, 0.2)',
-        //   'rgba(75, 192, 192, 0.2)',
-        //   'rgba(153, 102, 255, 0.2)',
-        //   'rgba(255, 159, 64, 0.2)'
-        // ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'rgb(0, 128, 0)'
         ],
-        borderWidth: 1
+        backgroundColor: [
+          'rgb(255, 255, 255)'
+        ],
+        borderWidth: 3
+      },
+      {
+        label: 'High Price',
+        data: chartData.map(data => data.high),
+        borderColor: [
+          'rgb(0, 0, 255)'
+        ],
+        backgroundColor: [
+          'rgb(255, 255, 255)'
+        ],
+        borderWidth: 3
+      },
+      {
+        label: 'Low Price',
+        data: chartData.map(data => data.low),
+        borderColor: [
+          'rgb(255, 0, 0)'
+        ],
+        backgroundColor: [
+          'rgb(255, 255, 255)'
+        ],
+        borderWidth: 3
       }]
     },
     options: {
       legend: {
-        display: false
+        display: true
       }
     }
   });
@@ -140,4 +155,82 @@ const addStockToPage = ({
 // DELETE BUTTON (FOR THE API CALL/ROUTE)
 const removeStockFromPage = stockName => {
   $(`#stock-${stockName}`).remove();
+}
+
+//This is the ticker api call for S&P and Dow
+function stockDow() {
+
+  var dowAPI = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=DJI&apikey=6QFBH662YTYIW2BW";
+  
+  $.getJSON(dowAPI, function (response) {
+
+      localStorage.stockCacheUser = JSON.stringify({
+          timestamp: (new Date()).getTime(),
+          data: response
+      });
+
+      populateDowStock(response);
+  });
+
+  function populateDowStock(response) {
+      {
+         
+          gSymbol = response.symbol;
+          console.log(response["Global Quote"]["05. price"]);
+                    
+          var Price = response["Global Quote"]["05. price"];
+                    
+          localStorage.setItem("curr_price", ["Global Quote"]["05. price"]);
+
+                  
+          console.log("Dow Price: " + response["Global Quote"]["05. price"]);
+
+          var markup = ' <div id="stockInfo"><p> <div class="dowPrice"> '+ response["Global Quote"]["05. price"] +
+          '</div> </p> </div>';
+           var div = document.createElement('div');
+            div.innerHTML = markup
+           document.getElementById('topTickerDow').prepend(div);
+       
+      }
+  
+  }
+      
+}
+
+function stockSNP() {
+
+  var snpAPI = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=INX&apikey=6QFBH662YTYIW2BW";
+ 
+  $.getJSON(snpAPI, function (response) {
+
+      localStorage.stockCacheUser = JSON.stringify({
+          timestamp: (new Date()).getTime(),
+          data: response
+      });
+
+      populateSNPStock(response);
+  });
+
+  function populateSNPStock(response) {
+      {
+         
+          gSymbol = response.symbol;
+          console.log(response["Global Quote"]["05. price"]);
+          
+          var Price = response["Global Quote"]["05. price"];
+                    
+          localStorage.setItem("curr_price", ["Global Quote"]["05. price"]);
+                  
+          console.log("S&P Price: " + response["Global Quote"]["05. price"]);
+
+          var markup = ' <div id="stockInfo"><p> <div class="snpPrice"> '+ response["Global Quote"]["05. price"] +
+          '</div> </p> </div>';
+           var div = document.createElement('div');
+            div.innerHTML = markup
+           document.getElementById('topTickerSP').prepend(div);
+       
+      }
+  
+  }
+      
 }
