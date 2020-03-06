@@ -98,7 +98,7 @@ const addStockToPage = ({
           </div>
         </div>
         <button type="button" class="col m-3 btn delete-stock-button">
-          <i class="fas fa-times fa-2x" style="color:#FF0000;"></i>
+          <i class="fas fa-trash-alt fa-2x" style="color:#FF0000;"></i>
         </button>
       </div>
     </div>
