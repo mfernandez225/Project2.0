@@ -153,11 +153,6 @@ const addStockToPage = ({
   });
 }
 
-// DELETE BUTTON (FOR THE API CALL/ROUTE)
-const removeStockFromPage = stockName => {
-  $(`#stock-${stockName}`).remove();
-}
-
 //This is the ticker api call for S&P and Dow
 function stockDow() {
 
@@ -175,8 +170,8 @@ function stockDow() {
 
   function populateDowStock(response) {
     {
-      var markup = ' <div id="stockInfo"><p> <div class="dowPrice"> ' + response["Global Quote"]["05. price"] +
-        '</div> </p> </div>';
+      var markup = '<div id="topTickerDow">' + response["Global Quote"]["05. price"] +
+        '</div>';
       var div = document.createElement('div');
       div.innerHTML = markup
       document.getElementById('topTickerDow').prepend(div);
@@ -199,11 +194,16 @@ function stockSNP() {
 
   function populateSNPStock(response) {
     {
-      var markup = ' <div id="stockInfo"><p> <div class="snpPrice"> ' + response["Global Quote"]["05. price"] +
-        '</div> </p> </div>';
+      var markup = ' <div id="topTickerSP">' + response["Global Quote"]["05. price"] +
+        '</div>';
       var div = document.createElement('div');
       div.innerHTML = markup
       document.getElementById('topTickerSP').prepend(div);
     }
   }
+}
+
+// DELETE BUTTON (FOR THE API CALL/ROUTE)
+const removeStockFromPage = stockName => {
+  $(`#stock-${stockName}`).remove();
 }
