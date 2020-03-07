@@ -29,17 +29,8 @@
     padding: 25px;
 }
 
-.typeahead,
-.tt-query,
-.tt-hint {
-    border: 2px solid #CCCCCC;
-    border-radius: 8px;
-    font-size: 24px;
-    height: 30px;
-    line-height: 30px;
-    outline: medium none;
-    padding: 8px 12px;
-    width: 396px;
+.twitter-typeahead {
+    flex-grow: 1;
 }
 
 .typeahead {
@@ -55,7 +46,7 @@
 }
 
 .tt-hint {
-    color: #999999;
+    display: none;
 }
 
 .tt-dropdown-menu {
