@@ -19,8 +19,7 @@
   },
   "homepage": "https://github.com/mfernandez225/Project2.0#readme",
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "nodemon": "^2.0.2"
+    "eslint": "^6.8.0"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -28,6 +27,7 @@
     "express-handlebars": "^3.1.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2",
     "sequelize": "^5.21.5"
   }
 }
