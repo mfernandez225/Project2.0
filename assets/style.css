@@ -1,3 +1,7 @@
+body {
+    background-image: url(/images/NYSE.png);
+}
+
 #tickerBox {
     width: 100%;
     border-bottom: 1px solid black;
@@ -27,6 +31,7 @@
 #findStock {
     text-transform: uppercase;
     padding: 25px;
+    background-color: #FFFFFF !important;
 }
 
 .twitter-typeahead {
