@@ -8,16 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="typeahead.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('input.typeahead').typeahead({
-                name: 'tickers',
-                remote: 'http://localhost:3000/tickers?key=%QUERY',
-                limit: 10
-            });
-        });
-    </script>
+  <script type="text/javascript" src="typeahead.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Aldrich|Codystar|Raleway+Dots|Press+Start+2P&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -31,22 +22,19 @@
       {{> search}}
       {{{ body }}}
     </div>
-    <footer class="row justify-content-center mb-3 mt-5">
-      <p><a id="morganstanley" class="text-dark" href="https://www.morganstanley.com"><img src="/images/morganstanley.png" alt="image"
-          height="70" width="70"></a>
-      <a id="tdameritrade" class="text-dark" href="https://www.tdameritrade.com" style="padding-left:75px;"><img src="/images/tdameritrade.png" alt="image"
-          height="70" width="70"></a>
-      <a id="etrade" class="text-dark" href="https://us.etrade.com/home" style="padding-left:75px;"><img src="/images/etrade.png" alt="image"
-          height="70" width="70"></a>
-      <a id="charlesschwab" class="text-dark" href="https://www.schwab.com" style="padding-left:75px;"><img src="/images/charlesschwab.png" alt="image"
-          height="70" width="70"></a>
-      <a id="robinhood" class="text-dark" href="https://robinhood.com/us/en/" style="padding-left:75px;"><img src="/images/robinhood.png" alt="image"
-          height="115" width="115"></a></p>
-      <p>
-      <a id="iexLogo" class="text-dark" href="https://iexcloud.io" style="padding-left:75px;"><img src="/images/logo-black.png" alt="image"
-          height="40" width="110"></a>
-      </p>
-      
+    <footer class="d-flex justify-content-center mb-3 mt-5">
+      {{!-- <p><a id="morganstanley" class="text-dark" href="https://www.morganstanley.com"><img
+            src="/images/morganstanley.png" alt="image" height="70" width="70"></a>
+        <a id="tdameritrade" class="text-dark" href="https://www.tdameritrade.com" style="padding-left:75px;"><img
+            src="/images/tdameritrade.png" alt="image" height="70" width="70"></a>
+        <a id="etrade" class="text-dark" href="https://us.etrade.com/home" style="padding-left:75px;"><img
+            src="/images/etrade.png" alt="image" height="70" width="70"></a>
+        <a id="charlesschwab" class="text-dark" href="https://www.schwab.com" style="padding-left:75px;"><img
+            src="/images/charlesschwab.png" alt="image" height="70" width="70"></a>
+        <a id="robinhood" class="text-dark" href="https://robinhood.com/us/en/" style="padding-left:75px;"><img
+            src="/images/robinhood.png" alt="image" height="115" width="115"></a> --}}
+      <a id="iexLogo" class="text-dark" href="https://iexcloud.io" style="padding-left:75px;"><img
+          src="/images/logo-black.png" alt="image" height="25" width="100"></a>
     </footer>
   </div>
   <script src="/javascript.js"></script>

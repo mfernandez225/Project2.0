@@ -3,45 +3,70 @@
 const apiKey = "Tpk_8ffdae4873fd4f08a97e679741d27746";
 // const apiKey = "pk_ab67997aa39c4296b79de441635e9a49";
 const apiBaseUrl = "https://sandbox.iexapis.com/stable/stock"
-    // const apiBaseUrl = "https://cloud.iexapis.com/stable/stock"
+// const apiBaseUrl = "https://cloud.iexapis.com/stable/stock"
 
-//This is the api call for header
+// When the page loads it looks up any stocks tracked and displays
+const getAllTrackStocks = () => {
+    $.getJSON('/tracked-stocks', (stocks) => {
+        stocks.forEach(stock => lookupAndAddToPage(stock.symbol))
+    })
+}
+
+// These are the intial API calls
 stockDow();
 stockSNP();
+getAllTrackStocks();
+
+// Attach to any input with typeahead class 
+$('input.typeahead').typeahead({
+    name: 'stocks',
+    remote: '/stocks?key=%QUERY',
+    limit: 10
+});
 
 // Search Function
-$("#searchForm").on("submit", async(event) => {
+$("#searchForm").on("submit", async (event) => {
     event.preventDefault();
     const stockName = $("#findStock").val().trim();
     if ($(`#stock-${stockName}`).length === 0) {
-        const {
-            companyName,
-            symbol,
-            latestPrice,
-            marketCap,
-            peRatio
-        } = await getStockInfo(stockName);
-        const {
-            chartData
-        } = await getStockChart(stockName);
-        addStockToPage({
-            companyName,
-            symbol,
-            latestPrice,
-            marketCap,
-            peRatio,
-            chartData
-        })
+        await lookupAndAddToPage(stockName)
+        $.post("/tracked-stocks", {
+            symbol: stockName
+        });
         $("#searchForm")[0].reset();
     }
 });
+
+
+// Gathers stock information and passes to the HTML generator
+const lookupAndAddToPage = async (stockName) => {
+    const {
+        companyName,
+        symbol,
+        latestPrice,
+        marketCap,
+        peRatio
+    } = await getStockInfo(stockName);
+    const {
+        chartData
+    } = await getStockChart(stockName);
+    addStockToPage({
+        companyName,
+        symbol,
+        latestPrice,
+        marketCap,
+        peRatio,
+        chartData
+    })
+}
 
 // When the user is typing it will automatically make the text Uppercase
 $("#findStock").on("keydown", () => {
     $("#findStock").val($("#findStock").val().toUpperCase());
 })
 
-const getStockInfo = async(stockName) => {
+// This is the actual API call to get the stock info
+const getStockInfo = async (stockName) => {
     const stockApiUrl = `${apiBaseUrl}/${stockName}/quote/2?token=${apiKey}`;
     const response = await $.getJSON(stockApiUrl, response => response).fail(() => {
         // We can insert an error message in the HTML
@@ -51,7 +76,8 @@ const getStockInfo = async(stockName) => {
     return response;
 }
 
-const getStockChart = async(stockName) => {
+// This is the actual API call to get the chart stock info
+const getStockChart = async (stockName) => {
     const chartApiUrl = `${apiBaseUrl}/${stockName}/chart/5d?token=${apiKey}`;
     const response = await $.getJSON(chartApiUrl, response => response).fail(() => {
         // We can insert an error message in the HTML
@@ -72,6 +98,7 @@ const addStockToPage = ({
     peRatio,
     chartData
 }) => {
+    // String interprelation into the HTML creating the rows
     $("#stocks").prepend(`
     <div id="stock-${symbol}" class="container">
       <div id="stockRow" class="row m-3">
@@ -162,7 +189,7 @@ function stockDow() {
 
     var dowAPI = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=DJI&apikey=6QFBH662YTYIW2BW";
 
-    $.getJSON(dowAPI, function(response) {
+    $.getJSON(dowAPI, function (response) {
 
         localStorage.stockCacheUser = JSON.stringify({
             timestamp: (new Date()).getTime(),
@@ -187,7 +214,7 @@ function stockSNP() {
 
     var snpAPI = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=INX&apikey=6QFBH662YTYIW2BW";
 
-    $.getJSON(snpAPI, function(response) {
+    $.getJSON(snpAPI, function (response) {
         localStorage.stockCacheUser = JSON.stringify({
             timestamp: (new Date()).getTime(),
             data: response
@@ -211,4 +238,7 @@ function stockSNP() {
 // DELETE BUTTON (FOR THE API CALL/ROUTE)
 const removeStockFromPage = stockName => {
     $(`#stock-${stockName}`).remove();
+    $.ajax(`/tracked-stocks/${stockName}`, {
+        method: 'delete'
+    })
 }

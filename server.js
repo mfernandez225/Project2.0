@@ -22,9 +22,7 @@ USE THIS INITIALLY, LOAD UP YOUR DATABASE WITH ANY METHOD.
 
 YOU MAY ONLY CONTINUE WITH THIS WHEN THE DATABASE HAS NO VALUE. 
 */
-db.sequelize.sync({
-    force: false
-}).then(function() {
+db.sequelize.sync().then(function () {
     app.listen(PORT, () => {
         console.log(`Project 2.0 is listening at http://localhost:${PORT}`)
     })
