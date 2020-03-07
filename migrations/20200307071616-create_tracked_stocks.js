@@ -10,7 +10,7 @@ module.exports = {
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
     return queryInterface.createTable('tracked_stocks', {
-      symbol: Sequelize.STRING
+      symbol: Sequelize.STRING(10)
     })
 
   },
