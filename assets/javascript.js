@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 
-const apiKey = "Tpk_8ffdae4873fd4f08a97e679741d27746";
-// const apiKey = "pk_ab67997aa39c4296b79de441635e9a49";
-const apiBaseUrl = "https://sandbox.iexapis.com/stable/stock"
-// const apiBaseUrl = "https://cloud.iexapis.com/stable/stock"
+// const apiKey = "Tpk_8ffdae4873fd4f08a97e679741d27746";
+const apiKey = "pk_ab67997aa39c4296b79de441635e9a49";
+// const apiBaseUrl = "https://sandbox.iexapis.com/stable/stock"
+const apiBaseUrl = "https://cloud.iexapis.com/stable/stock"
 
 // When the page loads it looks up any stocks tracked and displays
 const getAllTrackStocks = () => {
