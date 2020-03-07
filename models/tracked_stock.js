@@ -1,12 +1,10 @@
 // Defined how the model interacts with the database
 
-
 module.exports = function (sequelize, DataTypes) {
   var TrackedStock = sequelize.define("TrackedStock", {
     symbol: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
-      len: [1],
       primaryKey: true
     }
   }, {

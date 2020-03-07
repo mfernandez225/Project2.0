@@ -5,14 +5,10 @@ module.exports = function (sequelize, DataTypes) {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [1]
-            }
         },
         symbol: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
-            len: [1],
             primaryKey: true,
         }
     }, {
